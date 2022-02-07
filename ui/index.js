@@ -29,19 +29,27 @@ import txHelper from './helpers/utils/tx-helper';
 log.setLevel(global.METAMASK_DEBUG ? 'debug' : 'warn');
 
 export default function launchMetamaskUi(opts, cb) {
-  const { backgroundConnection } = opts;
-  actions._setBackgroundConnection(backgroundConnection);
+  let attempts = 0;
   // check if we are unlocked first
-  backgroundConnection.getState(function (err, metamaskState) {
-    if (err) {
-      cb(err);
-      return;
+  const initUIInterval = setInterval(() => {
+    attempts += 1;
+    if (attempts === 10) {
+      clearInterval(initUIInterval);
     }
-    startApp(metamaskState, backgroundConnection, opts).then((store) => {
-      setupDebuggingHelpers(store);
-      cb(null, store);
+    const { backgroundConnection } = opts;
+    actions._setBackgroundConnection(backgroundConnection);
+    backgroundConnection.getState(function (err, metamaskState) {
+      if (err) {
+        cb(err);
+        return;
+      }
+      startApp(metamaskState, backgroundConnection, opts).then((store) => {
+        clearInterval(initUIInterval);
+        setupDebuggingHelpers(store);
+        cb(null, store);
+      });
     });
-  });
+  }, 1000);
 }
 
 async function startApp(metamaskState, backgroundConnection, opts) {

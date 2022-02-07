@@ -24,6 +24,7 @@ import metaRPCClientFactory from './lib/metaRPCClientFactory';
 start().catch(log.error);
 
 async function start() {
+  console.log('------- into start --------');
   // create platform global
   global.platform = new ExtensionPlatform();
 
@@ -88,7 +89,9 @@ async function queryCurrentActiveTab(windowType) {
 }
 
 function initializeUi(activeTab, container, connectionStream, cb) {
+  console.log('--- into initializeUi ---');
   connectToAccountManager(connectionStream, (err, backgroundConnection) => {
+    console.log('-- connectToAccountManager --');
     if (err) {
       cb(err);
       return;
