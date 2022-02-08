@@ -448,9 +448,7 @@ export default class ConfirmTransactionBase extends Component {
           detailTitle={
             txData.dappSuggestedGasFees ? (
               <>
-                {isMultiLayerFeeNetwork
-                  ? t('transactionDetailLayer2GasHeading')
-                  : t('transactionDetailGasHeading')}
+                {t('transactionDetailGasHeading')}
                 <InfoTooltip
                   contentText={t('transactionDetailDappGasTooltip')}
                   position="top"
@@ -460,9 +458,7 @@ export default class ConfirmTransactionBase extends Component {
               </>
             ) : (
               <>
-                {isMultiLayerFeeNetwork
-                  ? t('transactionDetailLayer2GasHeading')
-                  : t('transactionDetailGasHeading')}
+                {t('transactionDetailGasHeading')}
                 <InfoTooltip
                   contentText={
                     <>
@@ -498,7 +494,6 @@ export default class ConfirmTransactionBase extends Component {
                 type={SECONDARY}
                 value={hexMinimumTransactionFee}
                 hideLabel={Boolean(useNativeCurrencyAsPrimaryCurrency)}
-                showFiat={isMultiLayerFeeNetwork}
               />
             </div>
           }
@@ -509,30 +504,28 @@ export default class ConfirmTransactionBase extends Component {
                 type={PRIMARY}
                 value={hexMinimumTransactionFee}
                 hideLabel={false && !useNativeCurrencyAsPrimaryCurrency}
-                numberOfDecimals={isMultiLayerFeeNetwork ? 12 : 6}
+                numberOfDecimals={6}
               />
             </div>
           }
           subText={
-            !isMultiLayerFeeNetwork && (
-              <>
-                <strong key="editGasSubTextFeeLabel">
-                  {t('editGasSubTextFeeLabel')}
-                </strong>
-                <div
-                  key="editGasSubTextFeeValue"
-                  className="confirm-page-container-content__currency-container"
-                >
-                  {renderHeartBeatIfNotInTest()}
-                  <UserPreferencedCurrencyDisplay
-                    key="editGasSubTextFeeAmount"
-                    type={PRIMARY}
-                    value={hexMaximumTransactionFee}
-                    hideLabel={!useNativeCurrencyAsPrimaryCurrency}
-                  />
-                </div>
-              </>
-            )
+            <>
+              <strong key="editGasSubTextFeeLabel">
+                {t('editGasSubTextFeeLabel')}
+              </strong>
+              <div
+                key="editGasSubTextFeeValue"
+                className="confirm-page-container-content__currency-container"
+              >
+                {renderHeartBeatIfNotInTest()}
+                <UserPreferencedCurrencyDisplay
+                  key="editGasSubTextFeeAmount"
+                  type={PRIMARY}
+                  value={hexMaximumTransactionFee}
+                  hideLabel={!useNativeCurrencyAsPrimaryCurrency}
+                />
+              </div>
+            </>
           }
           subTitle={
             <>
@@ -599,7 +592,9 @@ export default class ConfirmTransactionBase extends Component {
           }
           rows={[
             renderSimulationFailureWarning && simulationFailureWarning(),
-            !renderSimulationFailureWarning && renderGasDetailsItem(),
+            !renderSimulationFailureWarning &&
+              !isMultiLayerFeeNetwork &&
+              renderGasDetailsItem(),
             !renderSimulationFailureWarning && isMultiLayerFeeNetwork && (
               <MultiLayerFeeMessage
                 transaction={txData}
