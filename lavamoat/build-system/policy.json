@@ -431,6 +431,11 @@
         "@babel/helper-plugin-utils": true
       }
     },
+    "@babel/plugin-syntax-typescript": {
+      "packages": {
+        "@babel/helper-plugin-utils": true
+      }
+    },
     "@babel/plugin-transform-arrow-functions": {
       "packages": {
         "@babel/helper-plugin-utils": true
@@ -679,6 +684,20 @@
         "@babel/helper-plugin-utils": true
       }
     },
+    "@babel/plugin-transform-typescript": {
+      "builtin": {
+        "assert": true
+      },
+      "globals": {
+        "console.warn": true
+      },
+      "packages": {
+        "@babel/core": true,
+        "@babel/helper-create-class-features-plugin": true,
+        "@babel/helper-plugin-utils": true,
+        "@babel/plugin-syntax-typescript": true
+      }
+    },
     "@babel/plugin-transform-unicode-escapes": {
       "packages": {
         "@babel/core": true,
@@ -782,6 +801,13 @@
         "@babel/plugin-transform-react-jsx": true,
         "@babel/plugin-transform-react-jsx-development": true,
         "@babel/plugin-transform-react-pure-annotations": true
+      }
+    },
+    "@babel/preset-typescript": {
+      "packages": {
+        "@babel/helper-plugin-utils": true,
+        "@babel/helper-validator-option": true,
+        "@babel/plugin-transform-typescript": true
       }
     },
     "@babel/template": {
