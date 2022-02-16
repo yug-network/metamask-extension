@@ -1414,9 +1414,6 @@
   "lastConnected": {
     "message": "Terakhir Terhubung"
   },
-  "layer1Fees": {
-    "message": "Biaya lapis 1"
-  },
   "learmMoreAboutGas": {
     "message": "Ingin $1 seputar gas?"
   },

@@ -1414,9 +1414,6 @@
   "lastConnected": {
     "message": "Последнее подключение"
   },
-  "layer1Fees": {
-    "message": "Комиссии 1-го уровня"
-  },
   "learmMoreAboutGas": {
     "message": "Хотите $1 о газе?"
   },

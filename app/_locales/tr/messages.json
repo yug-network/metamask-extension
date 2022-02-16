@@ -1414,9 +1414,6 @@
   "lastConnected": {
     "message": "Son Bağlanma"
   },
-  "layer1Fees": {
-    "message": "Aşama 1 ücretleri"
-  },
   "learmMoreAboutGas": {
     "message": "Gaz hakkında $1 istiyor musunuz?"
   },
