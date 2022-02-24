@@ -608,6 +608,9 @@
   "copiedExclamation": {
     "message": "Copied!"
   },
+  "copiedForMinute": {
+    "message": "Copied. It will be stored for one minute."
+  },
   "copyAddress": {
     "message": "Copy address to clipboard"
   },
@@ -2401,14 +2404,55 @@
   "revealSeedWords": {
     "message": "Reveal Secret Recovery Phrase"
   },
+  "secretRecoveryPhraseDescription": {
+    "message": "The $1 provides $2",
+    "description": "$1 is Secret Recovery Phase link, $2 is bold text"
+  },
+  "secretRecoveryPhraseDescriptionLink": {
+    "message": "Secret Recovery Phase (SRP)"
+  },
+  "secretRecoveryPhraseDescriptionBold": {
+    "message": "full access to your wallet and funds."
+  },
+  "secretRecoveryPhraseNonCustodialDescription": {
+    "message": "MetaMask is a $1. That means $2",
+    "description": "$1 is a non-custodial wallet, $2 is bold text"
+  },
+  "secretRecoveryPhraseNonCustodialDescriptionLink": {
+    "message": "non-custodial wallet"
+  },
+  "secretRecoveryPhraseNonCustodialDescriptionBold": {
+    "message": "you're the owner of your SRP."
+  },
   "revealSeedWordsDescription": {
     "message": "If you ever change browsers or move computers, you will need this Secret Recovery Phrase to access your accounts. Save them somewhere safe and secret."
   },
-  "revealSeedWordsWarning": {
-    "message": "These words can be used to steal all your accounts."
+  "secretRecoveryPhraseWarning": {
+    "message": "MetaMask Support will never request this."
   },
-  "revealSeedWordsWarningTitle": {
-    "message": "DO NOT share this phrase with anyone!"
+  "secretRecoveryPhraseWarningTitle": {
+    "message": "Make sure no one is looking at your screen."
+  },
+  "makeSureNobodyIsLooking": {
+    "message": "Make sure nobody is looking"
+  },
+  "secretRecoveryPhrasePopoverTitle": {
+    "message": "Keep your SRP safe"
+  },
+  "secretRecoveryPhrasePopoverDescription": {
+    "message": "Your Secret Recovery Phrase provides $1"
+  },
+  "secretRecoveryPhrasePopoverDescriptionBold": {
+    "message": "full access to your wallet and funds."
+  },
+  "secretRecoveryPhrasePopoverDontShareBold": {
+    "message": "Do not share this with anyone. "
+  },
+  "secretRecoveryPhrasePopoverDontShareDescription": {
+    "message": "$1 MetaMask Support will not request this, $2 "
+  },
+  "secretRecoveryPhrasePopoverDontShareLink": {
+    "message": "but phishers might."
   },
   "rinkeby": {
     "message": "Rinkeby Test Network"
@@ -3571,6 +3615,15 @@
   },
   "yourPrivateSeedPhrase": {
     "message": "Your private Secret Recovery Phrase"
+  },
+  "yourSecretSeedPhrase": {
+    "message": "Your Secret Recovery Phrase"
+  },
+  "text": {
+    "message": "Text"
+  },
+  "qrCode": {
+    "message": "QR Code"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "Zero gas price on speed up"
