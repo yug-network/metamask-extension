@@ -1691,6 +1691,9 @@
     "message": "Make sure no one is watching your screen",
     "description": "Warning to users to be care while creating and saving their new Secret Recovery Phrase"
   },
+  "makeSureNobodyIsLooking": {
+    "message": "Make sure nobody is looking"
+  },
   "max": {
     "message": "Max"
   },
@@ -2286,6 +2289,9 @@
   "publicAddress": {
     "message": "Public Address"
   },
+  "qrCode": {
+    "message": "QR Code"
+  },
   "queue": {
     "message": "Queue"
   },
@@ -2404,55 +2410,8 @@
   "revealSeedWords": {
     "message": "Reveal Secret Recovery Phrase"
   },
-  "secretRecoveryPhraseDescription": {
-    "message": "The $1 provides $2",
-    "description": "$1 is Secret Recovery Phase link, $2 is bold text"
-  },
-  "secretRecoveryPhraseDescriptionLink": {
-    "message": "Secret Recovery Phase (SRP)"
-  },
-  "secretRecoveryPhraseDescriptionBold": {
-    "message": "full access to your wallet and funds."
-  },
-  "secretRecoveryPhraseNonCustodialDescription": {
-    "message": "MetaMask is a $1. That means $2",
-    "description": "$1 is a non-custodial wallet, $2 is bold text"
-  },
-  "secretRecoveryPhraseNonCustodialDescriptionLink": {
-    "message": "non-custodial wallet"
-  },
-  "secretRecoveryPhraseNonCustodialDescriptionBold": {
-    "message": "you're the owner of your SRP."
-  },
   "revealSeedWordsDescription": {
     "message": "If you ever change browsers or move computers, you will need this Secret Recovery Phrase to access your accounts. Save them somewhere safe and secret."
-  },
-  "secretRecoveryPhraseWarning": {
-    "message": "MetaMask Support will never request this."
-  },
-  "secretRecoveryPhraseWarningTitle": {
-    "message": "Make sure no one is looking at your screen."
-  },
-  "makeSureNobodyIsLooking": {
-    "message": "Make sure nobody is looking"
-  },
-  "secretRecoveryPhrasePopoverTitle": {
-    "message": "Keep your SRP safe"
-  },
-  "secretRecoveryPhrasePopoverDescription": {
-    "message": "Your Secret Recovery Phrase provides $1"
-  },
-  "secretRecoveryPhrasePopoverDescriptionBold": {
-    "message": "full access to your wallet and funds."
-  },
-  "secretRecoveryPhrasePopoverDontShareBold": {
-    "message": "Do not share this with anyone. "
-  },
-  "secretRecoveryPhrasePopoverDontShareDescription": {
-    "message": "$1 MetaMask Support will not request this, $2 "
-  },
-  "secretRecoveryPhrasePopoverDontShareLink": {
-    "message": "but phishers might."
   },
   "rinkeby": {
     "message": "Rinkeby Test Network"
@@ -2504,6 +2463,50 @@
   },
   "secretRecoveryPhrase": {
     "message": "Secret Recovery Phrase"
+  },
+  "secretRecoveryPhraseDescription": {
+    "message": "The $1 provides $2",
+    "description": "$1 is Secret Recovery Phase link, $2 is bold text"
+  },
+  "secretRecoveryPhraseDescriptionBold": {
+    "message": "full access to your wallet and funds."
+  },
+  "secretRecoveryPhraseDescriptionLink": {
+    "message": "Secret Recovery Phase (SRP)"
+  },
+  "secretRecoveryPhraseNonCustodialDescription": {
+    "message": "MetaMask is a $1. That means $2",
+    "description": "$1 is a non-custodial wallet, $2 is bold text"
+  },
+  "secretRecoveryPhraseNonCustodialDescriptionBold": {
+    "message": "you're the owner of your SRP."
+  },
+  "secretRecoveryPhraseNonCustodialDescriptionLink": {
+    "message": "non-custodial wallet"
+  },
+  "secretRecoveryPhrasePopoverDescription": {
+    "message": "Your Secret Recovery Phrase provides $1"
+  },
+  "secretRecoveryPhrasePopoverDescriptionBold": {
+    "message": "full access to your wallet and funds."
+  },
+  "secretRecoveryPhrasePopoverDontShareBold": {
+    "message": "Do not share this with anyone. "
+  },
+  "secretRecoveryPhrasePopoverDontShareDescription": {
+    "message": "$1 MetaMask Support will not request this, $2 "
+  },
+  "secretRecoveryPhrasePopoverDontShareLink": {
+    "message": "but phishers might."
+  },
+  "secretRecoveryPhrasePopoverTitle": {
+    "message": "Keep your SRP safe"
+  },
+  "secretRecoveryPhraseWarning": {
+    "message": "MetaMask Support will never request this."
+  },
+  "secretRecoveryPhraseWarningTitle": {
+    "message": "Make sure no one is looking at your screen."
   },
   "secureWallet": {
     "message": "Secure Wallet"
@@ -3214,6 +3217,9 @@
   "testFaucet": {
     "message": "Test Faucet"
   },
+  "text": {
+    "message": "Text"
+  },
   "thisWillCreate": {
     "message": "This will create a new wallet and Secret Recovery Phrase"
   },
@@ -3618,12 +3624,6 @@
   },
   "yourSecretSeedPhrase": {
     "message": "Your Secret Recovery Phrase"
-  },
-  "text": {
-    "message": "Text"
-  },
-  "qrCode": {
-    "message": "QR Code"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "Zero gas price on speed up"
