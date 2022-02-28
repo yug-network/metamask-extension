@@ -37,6 +37,9 @@ export default class SignatureRequestOriginal extends Component {
     hardwareWalletRequiresConnection: PropTypes.bool,
     isLedgerWallet: PropTypes.bool,
     nativeCurrency: PropTypes.string.isRequired,
+    messagesCount: PropTypes.number,
+    showRejectTransactionsConfirmationModal: PropTypes.func.isRequired,
+    cancelAll: PropTypes.func.isRequired,
   };
 
   state = {
@@ -316,7 +319,31 @@ export default class SignatureRequestOriginal extends Component {
     );
   };
 
+  handleCancelAll = () => {
+    const {
+      cancelAll,
+      clearConfirmTransaction,
+      history,
+      mostRecentOverviewPage,
+      showRejectTransactionsConfirmationModal,
+      messagesCount,
+    } = this.props;
+    const unapprovedTxCount = messagesCount;
+
+    showRejectTransactionsConfirmationModal({
+      unapprovedTxCount,
+      onSubmit: async () => {
+        await cancelAll();
+        clearConfirmTransaction();
+        history.push(mostRecentOverviewPage);
+      },
+    });
+  };
+
   render = () => {
+    const { messagesCount } = this.props;
+    const { t } = this.context;
+    const rejectNText = t('rejectTxsN', [messagesCount]);
     return (
       <div className="request-signature__container">
         {this.renderHeader()}
@@ -327,6 +354,14 @@ export default class SignatureRequestOriginal extends Component {
           </div>
         ) : null}
         {this.renderFooter()}
+        {messagesCount > 1 ? (
+          <a
+            className="request-signature__container__reject"
+            onClick={() => this.handleCancelAll()}
+          >
+            {rejectNText}
+          </a>
+        ) : null}
       </div>
     );
   };
