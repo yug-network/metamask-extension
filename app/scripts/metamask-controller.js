@@ -1752,9 +1752,8 @@ export default class MetamaskController extends EventEmitter {
             collectibleDetectionController,
           )
         : null,
-        
-      resetBlockList: nodeify(
-        this.blockController.resetBlockList,
+
+      resetBlockList: this.blockController.resetBlockList.bind(
         this.blockController,
       ),
     };
