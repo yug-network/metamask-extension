@@ -1,5 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { I18nContext } from '../../../contexts/i18n';
 import Tooltip from '../tooltip';
 import Popover from '../popover';
@@ -8,6 +10,11 @@ import Identicon from '../identicon/identicon.component';
 import { shortenAddress } from '../../../helpers/utils/util';
 import CopyIcon from '../icon/copy-icon.component';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
+import {
+  getIsCustomNetwork,
+  getRpcPrefsForCurrentProvider,
+} from '../../../selectors';
+import { NETWORKS_ROUTE } from '../../../helpers/constants/routes';
 
 const NicknamePopover = ({
   address,
@@ -17,12 +24,16 @@ const NicknamePopover = ({
   explorerLink,
 }) => {
   const t = useContext(I18nContext);
+  const history = useHistory();
 
   const onAddClick = useCallback(() => {
     onAdd();
   }, [onAdd]);
 
   const [copied, handleCopy] = useCopyToClipboard();
+
+  const isCustomNetwork = useSelector(getIsCustomNetwork);
+  const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
 
   return (
     <div className="nickname-popover">
@@ -60,16 +71,28 @@ const NicknamePopover = ({
           <Button
             type="link"
             className="nickname-popover__etherscan-link"
-            onClick={() => {
-              global.platform.openTab({
-                url: explorerLink,
-              });
-            }}
+            onClick={
+              !rpcPrefs.blockExplorerUrl && isCustomNetwork
+                ? () => {
+                    history.push(NETWORKS_ROUTE);
+                  }
+                : () => {
+                    global.platform.openTab({
+                      url: explorerLink,
+                    });
+                  }
+            }
             target="_blank"
             rel="noopener noreferrer"
-            title={t('etherscanView')}
+            title={
+              !rpcPrefs.blockExplorerUrl && isCustomNetwork
+                ? t('addBlockExplorer')
+                : t('etherscanView')
+            }
           >
-            {t('viewOnBlockExplorer')}
+            {!rpcPrefs.blockExplorerUrl && isCustomNetwork
+              ? t('addBlockExplorer')
+              : t('viewOnBlockExplorer')}
           </Button>
         </div>
         <Button

@@ -11,6 +11,7 @@ import {
   OPTIMISM_CHAIN_ID,
   OPTIMISM_TESTNET_CHAIN_ID,
   BUYABLE_CHAINS_MAP,
+  CHAIN_ID_TO_RPC_URL_MAP,
 } from '../../shared/constants/network';
 import {
   KEYRING_TYPES,
@@ -898,4 +899,10 @@ export function getIsAdvancedGasFeeDefault(state) {
   return (
     Boolean(advancedGasFee?.maxBaseFee) && Boolean(advancedGasFee?.priorityFee)
   );
+}
+
+export function getIsCustomNetwork(state) {
+  const chainId = getCurrentChainId(state);
+
+  return !CHAIN_ID_TO_RPC_URL_MAP[chainId];
 }
