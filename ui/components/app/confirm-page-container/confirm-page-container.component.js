@@ -266,7 +266,7 @@ export default class ConfirmPageContainer extends Component {
               showBuyModal={showBuyModal}
               toAddress={toAddress}
               transactionType={currentTransaction.type}
-              showingHardwareConnectionContents={
+              hideConfirmPageContainerSummaryAndButtons={
                 showingHardwareConnectionContents
               }
             />

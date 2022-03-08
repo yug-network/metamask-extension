@@ -57,7 +57,7 @@ export default class ConfirmPageContainerContent extends Component {
     showBuyModal: PropTypes.func,
     toAddress: PropTypes.string,
     transactionType: PropTypes.string,
-    showingHardwareConnectionContents: PropTypes.bool,
+    hideConfirmPageContainerSummaryAndButtons: PropTypes.bool.isRequired,
   };
 
   renderContent() {
@@ -133,7 +133,7 @@ export default class ConfirmPageContainerContent extends Component {
       showBuyModal,
       toAddress,
       transactionType,
-      showingHardwareConnectionContents,
+      hideConfirmPageContainerSummaryAndButtons,
     } = this.props;
 
     const primaryAction = hideUserAcknowledgedGasMissing
@@ -170,7 +170,7 @@ export default class ConfirmPageContainerContent extends Component {
             />
           </div>
         )}
-        {showingHardwareConnectionContents ? null : (
+        {hideConfirmPageContainerSummaryAndButtons ? null : (
           <ConfirmPageContainerSummary
             className={classnames({
               'confirm-page-container-summary--border':
@@ -240,17 +240,19 @@ export default class ConfirmPageContainerContent extends Component {
           </div>
         )}
 
-        <PageContainerFooter
-          onCancel={onCancel}
-          cancelText={cancelText}
-          onSubmit={onSubmit}
-          submitText={submitText}
-          disabled={disabled}
-        >
-          {unapprovedTxCount > 1 ? (
-            <a onClick={onCancelAll}>{rejectNText}</a>
-          ) : null}
-        </PageContainerFooter>
+        {hideConfirmPageContainerSummaryAndButtons ? null : (
+          <PageContainerFooter
+            onCancel={onCancel}
+            cancelText={cancelText}
+            onSubmit={onSubmit}
+            submitText={submitText}
+            disabled={disabled}
+          >
+            {unapprovedTxCount > 1 ? (
+              <a onClick={onCancelAll}>{rejectNText}</a>
+            ) : null}
+          </PageContainerFooter>
+        )}
       </div>
     );
   }
