@@ -64,13 +64,13 @@ const AssetOptions = ({
             }
           >
             {rpcPrefs.blockExplorerUrl &&
-              t('viewinExplorer', [t('blockExplorerAccountAction')])}
+              t('viewinExplorer', [t('blockExplorerAssetAction')])}
             {!rpcPrefs.blockExplorerUrl &&
               isCustomNetwork &&
               t('addBlockExplorer')}
             {!rpcPrefs.blockExplorerUrl &&
               !isCustomNetwork &&
-              t('viewOnEtherscan', [t('blockExplorerAccountAction')])}
+              t('viewOnEtherscan', [t('blockExplorerAssetAction')])}
           </MenuItem>
           {isNativeAsset ? null : (
             <MenuItem

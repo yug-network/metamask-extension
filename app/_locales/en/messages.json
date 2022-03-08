@@ -378,6 +378,10 @@
     "message": "Account",
     "description": "This is used with viewOnEtherscan and viewInExplorer e.g View Account in Explorer"
   },
+  "blockExplorerAssetAction": {
+    "message": "Asset",
+    "description": "This is used with viewOnEtherscan and viewInExplorer e.g View Asset in Explorer"
+  },
   "blockExplorerSwapAction": {
     "message": "Swap",
     "description": "This is used with viewOnEtherscan e.g View Swap on Etherscan"
