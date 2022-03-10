@@ -84,7 +84,7 @@ export default class AccountDetailsModal extends Component {
             !rpcPrefs.blockExplorerUrl && isCustomNetwork
               ? () => {
                   hideModal();
-                  history.push(NETWORKS_ROUTE);
+                  history.push(`${NETWORKS_ROUTE}#blockExplorerUrl`);
                 }
               : () => {
                   const accountLink = getAccountLink(

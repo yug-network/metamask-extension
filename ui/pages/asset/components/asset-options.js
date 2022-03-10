@@ -55,7 +55,7 @@ const AssetOptions = ({
             onClick={
               !rpcPrefs.blockExplorerUrl && isCustomNetwork
                 ? () => {
-                    history.push(NETWORKS_ROUTE);
+                    history.push(`${NETWORKS_ROUTE}#blockExplorerUrl`);
                   }
                 : () => {
                     setAssetOptionsOpen(false);

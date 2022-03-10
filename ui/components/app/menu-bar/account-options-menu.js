@@ -62,7 +62,7 @@ export default function AccountOptionsMenu({ anchorElement, onClose }) {
         onClick={
           !rpcPrefs.blockExplorerUrl && isCustomNetwork
             ? () => {
-                history.push(NETWORKS_ROUTE);
+                history.push(`${NETWORKS_ROUTE}#blockExplorerUrl`);
               }
             : () => {
                 blockExplorerLinkClickedEvent();
