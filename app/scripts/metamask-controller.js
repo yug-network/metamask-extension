@@ -46,7 +46,6 @@ import SmartTransactionsController from '@metamask/smart-transactions-controller
 import { SnapController } from '@metamask/snap-controllers';
 import { IframeExecutionService } from '@metamask/iframe-execution-environment-service';
 ///: END:ONLY_INCLUDE_IN
-
 import {
   TRANSACTION_STATUSES,
   TRANSACTION_TYPES,
@@ -84,6 +83,10 @@ import { hexToDecimal } from '../../ui/helpers/utils/conversions.util';
 import { getTokenValueParam } from '../../ui/helpers/utils/token-util';
 import { getTransactionData } from '../../ui/helpers/utils/transactions.util';
 import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
+import {
+  onMessageReceived,
+  onExtensionConnect,
+} from './detect-multiple-instances';
 import ComposableObservableStore from './lib/ComposableObservableStore';
 import AccountTracker from './lib/account-tracker';
 import createLoggerMiddleware from './lib/createLoggerMiddleware';
@@ -134,7 +137,6 @@ import {
   buildSnapRestrictedMethodSpecifications,
   ///: END:ONLY_INCLUDE_IN
 } from './controllers/permissions';
-// import { detect } from 'detect-browser';
 
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import { getPlatform } from './lib/util';
@@ -989,37 +991,9 @@ export default class MetamaskController extends EventEmitter {
     // TODO:LegacyProvider: Delete
     this.publicConfigStore = this.createPublicConfigStore();
 
-    // **Multiple instances warning test
-
-    console.log('trying to wire-up things');
-
-    // const browser = detect();
-
-    const prodMetaMaskId = 'nkbihfbeogaeaoehlefnkodbefgpgknn';
-    const flaskMetaMaskId = 'ljfoeinjpaedjfecbmggjgodbgkmjkjk';
-    const localBuildMetaMaskId = 'kmagmdmbdbcghdcmegnkpcfgpdologhd';
-
-    let metamaskProdPort;
-    let metamaskFlaskPort;
-
-    // *errors are failing to catch but they happen (see the console)
-    try {
-      metamaskProdPort = chrome.runtime.connect(prodMetaMaskId);
-      console.log('metamaskProdPort connected');
-    } catch (e) {
-      console.log('metamaskProd is disabled');
-    }
-    try {
-      metamaskFlaskPort = chrome.runtime.connect(flaskMetaMaskId);
-      console.log('metamaskFlaskPort connected');
-    } catch (e) {
-      console.log('metamaskFlask is disabled');
-    }
-
-    // *detects only itself but not other tabs & extensions
-    chrome.runtime.onConnect.addListener((port) => {
-      console.log('New instance detected! sender:', port.sender);
-    });
+    // multiple MetaMask instances warning
+    this.extension.runtime.onMessageExternal.addListener(onMessageReceived);
+    this.extension.runtime.onConnect.addListener(onExtensionConnect);
   }
 
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
