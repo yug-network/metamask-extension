@@ -464,13 +464,13 @@ function setupController(initState, initLangCode) {
    * The number reflects the current number of pending transactions or message signatures needing user approval.
    */
   function updateBadge() {
-    let label = '';
-    const count = getUnapprovedTransactionCount();
-    if (count) {
-      label = String(count);
-    }
-    extension.browserAction.setBadgeText({ text: label });
-    extension.browserAction.setBadgeBackgroundColor({ color: '#037DD6' });
+    // let label = '';
+    // const count = getUnapprovedTransactionCount();
+    // if (count) {
+    //   label = String(count);
+    // }
+    // extension.browserAction.setBadgeText({ text: label });
+    // extension.browserAction.setBadgeBackgroundColor({ color: '#037DD6' });
   }
 
   function getUnapprovedTransactionCount() {

@@ -3,5 +3,10 @@
     "target": "ES6",
     "module": "commonjs"
   },
-  "include": ["ui/**/*.js", "app/**/*.js", "shared/**/*.js"]
+  "include": [
+    "ui/**/*.js",
+    "app/**/*.js",
+    "shared/**/*.js",
+    "app/scripts/app-init.template"
+  ]
 }

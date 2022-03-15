@@ -1,6 +1,6 @@
 const { callbackify } = require('util');
 const path = require('path');
-const { writeFileSync, readFileSync } = require('fs');
+const { writeFileSync, readFileSync, unlinkSync } = require('fs');
 const EventEmitter = require('events');
 const gulp = require('gulp');
 const watch = require('gulp-watch');
@@ -335,6 +335,46 @@ function createScriptTasks({
   }
 }
 
+async function bundleAppInitialiser({
+  jsBundles,
+  browserPlatforms,
+  buildType,
+  devMode,
+  ignoredFiles,
+  testing,
+  policyOnly,
+  shouldLintFenceFiles,
+}) {
+  const label = 'app-init';
+  // TODO: remove this filter once MV3 is supported in firefox
+  const mv3BrowserPlatforms = browserPlatforms.filter(
+    (platform) => platform !== 'firefox',
+  );
+  const fileList = jsBundles.reduce(
+    (result, file) => `${result}'${file}',\n    `,
+    '',
+  );
+  const jsTemplate = readFileSync('./app/scripts/app-init.js', 'utf8');
+  const jsOutput = jsTemplate.replace('/** FILE NAMES */', fileList);
+  const dest = `./dist/${mv3BrowserPlatforms[0]}/app-init.temp.js`;
+  writeFileSync(dest, jsOutput);
+
+  await createNormalBundle({
+    browserPlatforms: mv3BrowserPlatforms,
+    buildType,
+    destFilepath: 'app-init.js',
+    devMode,
+    entryFilepath: dest,
+    ignoredFiles,
+    label,
+    testing,
+    policyOnly,
+    shouldLintFenceFiles,
+  })();
+
+  unlinkSync(dest);
+}
+
 function createFactoredBuild({
   browserPlatforms,
   buildType,
@@ -440,12 +480,13 @@ function createFactoredBuild({
     });
 
     // wait for bundle completion for postprocessing
-    events.on('bundleDone', () => {
+    events.on('bundleDone', async () => {
       // Skip HTML generation if nothing is to be written to disk
       if (policyOnly) {
         return;
       }
       const commonSet = sizeGroupMap.get('common');
+
       // create entry points for each file
       for (const [groupLabel, groupSet] of sizeGroupMap.entries()) {
         // skip "common" group, they are added to all other groups
@@ -485,6 +526,19 @@ function createFactoredBuild({
               commonSet,
               browserPlatforms,
               useLavamoat: true,
+            });
+            const jsBundles = [...commonSet.values(), ...groupSet.values()].map(
+              (label) => `./${label}.js`,
+            );
+            await bundleAppInitialiser({
+              jsBundles,
+              browserPlatforms,
+              buildType,
+              devMode,
+              ignoredFiles,
+              testing,
+              policyOnly,
+              shouldLintFenceFiles,
             });
             break;
           }
