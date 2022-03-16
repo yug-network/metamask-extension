@@ -33,6 +33,15 @@ import IconPlus from '../../ui/icon/icon-plus';
 import IconImport from '../../ui/icon/icon-import';
 
 import Button from '../../ui/button';
+import Box from '../../ui/box';
+import {
+  ALIGN_ITEMS,
+  BLOCK_SIZES,
+  DISPLAY,
+  FLEX_DIRECTION,
+  FLEX_WRAP,
+  JUSTIFY_CONTENT,
+} from '../../../helpers/constants/design-system';
 import KeyRingLabel from './keyring-label';
 
 export function AccountMenuItem(props) {
@@ -83,6 +92,7 @@ export default class AccountMenu extends Component {
     toggleAccountMenu: PropTypes.func,
     addressConnectedSubjectMap: PropTypes.object,
     originOfCurrentTab: PropTypes.string,
+    autoDetectAccounts: PropTypes.func,
   };
 
   accountsRef;
@@ -296,6 +306,8 @@ export default class AccountMenu extends Component {
       toggleAccountMenu,
       lockMetamask,
       history,
+      accounts,
+      autoDetectAccounts,
     } = this.props;
 
     if (!isAccountMenuOpen) {
@@ -314,16 +326,35 @@ export default class AccountMenu extends Component {
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}
-          <Button
-            className="account-menu__lock-button"
-            type="secondary"
-            onClick={() => {
-              lockMetamask();
-              history.push(DEFAULT_ROUTE);
-            }}
+          <Box
+            width={BLOCK_SIZES.FULL}
+            display={DISPLAY.FLEX}
+            alignItems={ALIGN_ITEMS.CENTER}
+            flexWrap={FLEX_WRAP.NO_WRAP}
+            flexDirection={FLEX_DIRECTION.ROW}
+            justifyContent={JUSTIFY_CONTENT.SPACE_BETWEEN}
           >
-            {t('lock')}
-          </Button>
+            {`${t('myAccounts')} (${accounts.length})`}
+            <Button
+              className="account-menu__lock-button"
+              onClick={() => {
+                lockMetamask();
+                history.push(DEFAULT_ROUTE);
+              }}
+            >
+              {t('lock')}
+            </Button>
+          </Box>
+          <Box>
+            <div
+              className="account-menu__refresh-button"
+              onClick={async () => {
+                await autoDetectAccounts();
+              }}
+            >
+              {t('refreshAccounts')}
+            </div>
+          </Box>
         </AccountMenuItem>
         <div className="account-menu__divider" />
         <div className="account-menu__accounts-container">
