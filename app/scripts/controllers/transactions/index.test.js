@@ -2159,17 +2159,6 @@ describe('Transaction Controller', function () {
       assert.equal(result.swapTokenValue, '0x0077');
     });
 
-    it('updates transaction user settings', function () {
-      txController.updateTransactionUserSettings('1', {
-        userEditedGasLimit: '0x0088',
-        userFeeLevel: 'high',
-      });
-
-      const result = txStateManager.getTransaction('1');
-      assert.equal(result.userEditedGasLimit, '0x0088');
-      assert.equal(result.userFeeLevel, 'high');
-    });
-
     it('updates transaction previous gas params', function () {
       txController.updatePreviousGasParams('1', {
         maxFeePerGas: '0x0011',

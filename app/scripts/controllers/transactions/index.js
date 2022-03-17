@@ -445,6 +445,8 @@ export default class TransactionController extends EventEmitter {
    * @param {string} txGasFees.defaultGasEstimates
    * @param {string} txGasFees.gas
    * @param {string} txGasFees.originalGasEstimate
+   * @param {string} userSettings.userEditedGasLimit
+   * @param {string} userSettings.userFeeLevel   
    */
   updateTransactionGasFees(
     txId,
@@ -458,6 +460,8 @@ export default class TransactionController extends EventEmitter {
       estimateSuggested,
       defaultGasEstimates,
       originalGasEstimate,
+      userEditedGasLimit,
+      userFeeLevel
     },
   ) {
     if (!this._checkIfTxStatusIsUnapproved(txId)) {
@@ -476,6 +480,8 @@ export default class TransactionController extends EventEmitter {
       estimateSuggested,
       defaultGasEstimates,
       originalGasEstimate,
+      userEditedGasLimit,
+      userFeeLevel
     };
 
     // only update what is defined
@@ -583,28 +589,6 @@ export default class TransactionController extends EventEmitter {
     const note = `Update Swap Transaction for ${txId}`;
     this._updateTransaction(txId, swapTransaction, note);
   }
-
-  /**
-   * updates a transaction's user settings only if the transaction state is unapproved
-   *
-   * @param {string} txId
-   * @param {object} userSettings - holds the metadata
-   * @param {string} userSettings.userEditedGasLimit
-   * @param {string} userSettings.userFeeLevel
-   */
-  updateTransactionUserSettings(txId, { userEditedGasLimit, userFeeLevel }) {
-    if (!this._checkIfTxStatusIsUnapproved(txId)) {
-      return;
-    }
-
-    let userSettings = { userEditedGasLimit, userFeeLevel };
-    // only update what is defined
-    userSettings = pickBy(userSettings);
-
-    const note = `Update User Settings for ${txId}`;
-    this._updateTransaction(txId, userSettings, note);
-  }
-
   // ====================================================================================================================================================
 
   /**
