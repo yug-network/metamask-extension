@@ -67,8 +67,7 @@ if (inTest || process.env.METAMASK_DEBUG) {
   global.metamaskGetState = localStore.get.bind(localStore);
 }
 
-// initialization flow
-initialize().catch(log.error);
+extension.runtime.onConnect.addListener(initialize);
 
 /**
  * @typedef {import('../../shared/constants/transaction').TransactionMeta} TransactionMeta
@@ -128,12 +127,13 @@ initialize().catch(log.error);
 /**
  * Initializes the MetaMask controller, and sets up all platform configuration.
  *
+ * @param {string} remotePort - remote application connecting to extension.
  * @returns {Promise} Setup complete.
  */
-async function initialize() {
+async function initialize(remotePort) {
   const initState = await loadStateFromPersistence();
   const initLangCode = await getFirstPreferredLangCode();
-  await setupController(initState, initLangCode);
+  await setupController(initState, initLangCode, remotePort);
   log.info('MetaMask initialization complete.');
 }
 
@@ -205,9 +205,10 @@ async function loadStateFromPersistence() {
  *
  * @param {Object} initState - The initial state to start the controller with, matches the state that is emitted from the controller.
  * @param {string} initLangCode - The region code for the language preferred by the current user.
+ * @param {string} remoteSourcePort - remote application connecting to extension.
  * @returns {Promise} After setup is complete.
  */
-function setupController(initState, initLangCode) {
+async function setupController(initState, initLangCode, remoteSourcePort) {
   //
   // MetaMask Controller
   //
@@ -291,9 +292,16 @@ function setupController(initState, initLangCode) {
     }
   }
 
+  const metamaskBlockedPorts = ['trezor-connect'];
+
+  if (remoteSourcePort) {
+    connectRemote(remoteSourcePort);
+  }
+
   //
   // connect to other contexts
   //
+  extension.runtime.onConnect.removeListener(initialize);
   extension.runtime.onConnect.addListener(connectRemote);
   extension.runtime.onConnectExternal.addListener(connectExternal);
 
@@ -302,8 +310,6 @@ function setupController(initState, initLangCode) {
     [ENVIRONMENT_TYPE_NOTIFICATION]: true,
     [ENVIRONMENT_TYPE_FULLSCREEN]: true,
   };
-
-  const metamaskBlockedPorts = ['trezor-connect'];
 
   const isClientOpenStatus = () => {
     return (
@@ -364,10 +370,11 @@ function setupController(initState, initLangCode) {
     }
 
     if (isMetaMaskInternalProcess) {
-      const portStream = new PortStream(remotePort);
       // communication with popup
       controller.isClientOpen = true;
+      const portStream = new PortStream(remotePort);
       controller.setupTrustedCommunication(portStream, remotePort.sender);
+      remotePort.postMessage('CONNECTION_READY');
 
       if (processName === ENVIRONMENT_TYPE_POPUP) {
         popupIsOpen = true;
@@ -396,7 +403,6 @@ function setupController(initState, initLangCode) {
       if (processName === ENVIRONMENT_TYPE_FULLSCREEN) {
         const tabId = remotePort.sender.tab.id;
         openMetamaskTabsIDs[tabId] = true;
-
         endOfStream(portStream, () => {
           delete openMetamaskTabsIDs[tabId];
           const isClientOpen = isClientOpenStatus();
@@ -476,13 +482,13 @@ function setupController(initState, initLangCode) {
    * The number reflects the current number of pending transactions or message signatures needing user approval.
    */
   function updateBadge() {
-    let label = '';
-    const count = getUnapprovedTransactionCount();
-    if (count) {
-      label = String(count);
-    }
-    extension.browserAction.setBadgeText({ text: label });
-    extension.browserAction.setBadgeBackgroundColor({ color: '#037DD6' });
+    // let label = '';
+    // const count = getUnapprovedTransactionCount();
+    // if (count) {
+    //   label = String(count);
+    // }
+    // extension.action.setBadgeText({ text: label });
+    // extension.action.setBadgeBackgroundColor({ color: '#037DD6' });
   }
 
   function getUnapprovedTransactionCount() {

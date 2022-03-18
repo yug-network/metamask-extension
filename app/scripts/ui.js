@@ -33,9 +33,13 @@ async function start() {
   // setup stream to background
   const extensionPort = extension.runtime.connect({ name: windowType });
   const connectionStream = new PortStream(extensionPort);
-
   const activeTab = await queryCurrentActiveTab(windowType);
-  initializeUiWithTab(activeTab);
+
+  extensionPort.onMessage.addListener((message) => {
+    if (message === 'CONNECTION_READY') {
+      initializeUiWithTab(activeTab);
+    }
+  });
 
   function displayCriticalError(container, err) {
     container.innerHTML =
@@ -47,6 +51,7 @@ async function start() {
 
   function initializeUiWithTab(tab) {
     const container = document.getElementById('app-content');
+    //
     initializeUi(tab, container, connectionStream, (err, store) => {
       if (err) {
         displayCriticalError(container, err);
