@@ -1,14 +1,14 @@
 import { useContext, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
-import { MetaMetricsContext as NewMetaMetricsContext } from '../contexts/metametrics.new';
+import { MetaMetricsContext as NewMetaMetricsContext } from '../contexts/metametrics';
 import { PATH_NAME_MAP } from '../helpers/constants/routes';
 import { txDataSelector } from '../selectors';
 import { useEqualityCheck } from './useEqualityCheck';
 
 // Type imports
 /**
- * @typedef {import('../contexts/metametrics.new').UIMetricsEventPayload} UIMetricsEventPayload
+ * @typedef {import('../contexts/metametrics').UIMetricsEventPayload} UIMetricsEventPayload
  * @typedef {import('../../shared/constants/metametrics').MetaMetricsEventOptions} MetaMetricsEventOptions
  */
 

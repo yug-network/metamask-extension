@@ -70,7 +70,7 @@ const renderHeartBeatIfNotInTest = () =>
 export default class ConfirmTransactionBase extends Component {
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
+    trackEvent: PropTypes.func,
   };
 
   static propTypes = {
@@ -276,13 +276,12 @@ export default class ConfirmTransactionBase extends Component {
       methodData = {},
     } = this.props;
 
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
+    this.context.trackEvent({
+      category: 'Transactions',
+      event: 'User clicks "Edit" on gas',
+      properties: {
         action: 'Confirm Screen',
-        name: 'User clicks "Edit" on gas',
-      },
-      customVariables: {
+        legacy_event: true,
         recipientKnown: null,
         functionType:
           actionKey ||
@@ -733,13 +732,12 @@ export default class ConfirmTransactionBase extends Component {
       methodData = {},
     } = this.props;
 
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
+    this.context.trackEvent({
+      category: 'Transactions',
+      event: 'Edit Transaction',
+      properties: {
         action: 'Confirm Screen',
-        name: 'Edit Transaction',
-      },
-      customVariables: {
+        legacy_event: true,
         recipientKnown: null,
         functionType:
           actionKey ||
@@ -940,14 +938,13 @@ export default class ConfirmTransactionBase extends Component {
       getNextNonce,
       tryReverseResolveAddress,
     } = this.props;
-    const { metricsEvent } = this.context;
-    metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
+    const { trackEvent } = this.context;
+    trackEvent({
+      category: 'Transactions',
+      event: 'Confirm: Started',
+      properties: {
         action: 'Confirm Screen',
-        name: 'Confirm: Started',
-      },
-      customVariables: {
+        legacy_event: true,
         origin,
       },
     });
