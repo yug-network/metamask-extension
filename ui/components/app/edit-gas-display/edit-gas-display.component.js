@@ -35,7 +35,7 @@ import ActionableMessage from '../../ui/actionable-message/actionable-message';
 
 import { I18nContext } from '../../../contexts/i18n';
 import GasTiming from '../gas-timing';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+import { MetaMetricsContext } from '../../../contexts/metametrics.new';
 
 export default function EditGasDisplay({
   mode = EDIT_GAS_MODES.MODIFY_IN_PLACE,

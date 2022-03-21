@@ -6,7 +6,7 @@ import {
 import {
   MetaMetricsProvider as NewMetaMetricsProvider,
   LegacyMetaMetricsProvider as NewLegacyMetaMetricsProvider,
-} from '../ui/contexts/metametrics';
+} from '../ui/contexts/metametrics.new';
 
 const MetaMetricsProviderStorybook = (props) => 
     (

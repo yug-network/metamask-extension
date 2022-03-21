@@ -18,7 +18,7 @@ import { useI18nContext } from '../../../hooks/useI18nContext';
 import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+import { MetaMetricsContext } from '../../../contexts/metametrics.new';
 
 export default function AccountOptionsMenu({ anchorElement, onClose }) {
   const t = useI18nContext();
