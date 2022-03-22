@@ -272,7 +272,7 @@ p#search-networks-helper-text {
     @include Paragraph;
 
     margin-left: 11px;
-    color: var(--ui-3);
+    color: var(--color-text-muted);
     width: 70%;
     text-overflow: ellipsis;
     white-space: nowrap;
