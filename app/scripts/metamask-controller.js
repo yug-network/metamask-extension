@@ -86,7 +86,7 @@ import { getTransactionData } from '../../ui/helpers/utils/transactions.util';
 import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
 import {
   onMessageReceived,
-  onExtensionConnect,
+  checkForMultipleVersionsRunning,
 } from './detect-multiple-instances';
 import ComposableObservableStore from './lib/ComposableObservableStore';
 import AccountTracker from './lib/account-tracker';
@@ -992,9 +992,9 @@ export default class MetamaskController extends EventEmitter {
     // TODO:LegacyProvider: Delete
     this.publicConfigStore = this.createPublicConfigStore();
 
-    // multiple MetaMask instances warning
+    // Multiple MetaMask instances launched warning
     this.extension.runtime.onMessageExternal.addListener(onMessageReceived);
-    this.extension.runtime.onConnect.addListener(onExtensionConnect);
+    checkForMultipleVersionsRunning();
   }
 
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
