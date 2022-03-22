@@ -114,7 +114,7 @@ const NetworksListItem = ({
       >
         {label || t(labelKey)}
         {currentProviderType !== NETWORK_TYPE_RPC && (
-          <LockIcon width="14px" height="17px" fill="#cdcdcd" />
+          <LockIcon width="14px" height="17px" fill="var(--color-icon-muted)" />
         )}
       </div>
     </div>
