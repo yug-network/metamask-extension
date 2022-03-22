@@ -99,6 +99,7 @@ export default class UnlockPage extends Component {
       ) {
         showOptInModal();
       }
+      autoDetectAccounts();
     } catch ({ message }) {
       if (message === 'Incorrect password') {
         const newState = await forceUpdateMetamaskState();

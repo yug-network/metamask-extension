@@ -128,7 +128,7 @@ class NetworkDropdown extends Component {
     setProviderType(newProviderType);
     setTimeout(() => {
       autoDetectAccounts();
-    }, 2000);
+    }, 500);
   }
 
   renderAddCustomButton() {

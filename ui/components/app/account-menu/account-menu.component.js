@@ -325,7 +325,6 @@ export default class AccountMenu extends Component {
       <div className="account-menu">
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
-          {t('myAccounts')}
           <Box
             width={BLOCK_SIZES.FULL}
             display={DISPLAY.FLEX}

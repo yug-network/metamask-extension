@@ -1961,12 +1961,6 @@ export default class MetamaskController extends EventEmitter {
 
       const { keyringController } = this;
 
-      // clear known identities
-      this.preferencesController.setAddresses([]);
-
-      // clear permissions
-      this.permissionController.clearState();
-
       const ethQuery = new EthQuery(this.provider);
       accounts = await keyringController.getAccounts();
       lastBalance = await this.getBalance(
@@ -1992,9 +1986,13 @@ export default class MetamaskController extends EventEmitter {
       }
 
       // remove extra zero balance account potentially created from seeking ahead
-      if (accounts.length > 1 && lastBalance === '0x0') {
+      while (accounts.length > 1 && lastBalance === '0x0') {
         await this.removeAccount(accounts[accounts.length - 1]);
         accounts = await keyringController.getAccounts();
+        lastBalance = await this.getBalance(
+          accounts[accounts.length - 1],
+          ethQuery,
+        );
       }
 
       for (let index = 0; index < 3; index++) {
