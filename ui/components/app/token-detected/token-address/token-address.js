@@ -6,10 +6,6 @@ import { useCopyToClipboard } from '../../../../hooks/useCopyToClipboard';
 import Box from '../../../ui/box';
 import Button from '../../../ui/button';
 import Typography from '../../../ui/typography';
-<<<<<<< HEAD
-=======
-import CopyIcon from '../../../ui/icon/copy-icon.component';
->>>>>>> 36fddb423 (reorganizing folders.)
 import Tooltip from '../../../ui/tooltip';
 
 import { COLORS, DISPLAY } from '../../../../helpers/constants/design-system';
