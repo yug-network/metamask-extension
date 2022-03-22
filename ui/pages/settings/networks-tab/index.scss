@@ -306,7 +306,7 @@ p#search-networks-helper-text {
     color: var(--ui-3);
 
     @media screen and (max-width: $break-small) {
-      color: var(--black);
+      color: var(--color-text-default);
     }
   }
 
