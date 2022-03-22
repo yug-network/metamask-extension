@@ -303,7 +303,7 @@ p#search-networks-helper-text {
   }
 
   &__networks-list-name--disabled {
-    color: var(--ui-3);
+    color: var(--color-text-muted);
 
     @media screen and (max-width: $break-small) {
       color: var(--color-text-default);
