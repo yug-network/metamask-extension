@@ -126,13 +126,14 @@ export function autoDetectAccounts() {
     })
       .then(() => {
         dispatch(showAccountsPage());
-        dispatch(hideLoadingIndication());
         return accounts;
       })
       .catch((err) => {
         dispatch(displayWarning(err.message));
-        dispatch(hideLoadingIndication());
         return Promise.reject(err);
+      })
+      .finally(() => {
+        dispatch(hideLoadingIndication());
       });
   };
 }
