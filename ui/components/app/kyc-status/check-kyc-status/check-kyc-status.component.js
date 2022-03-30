@@ -203,16 +203,29 @@ export default class CheckKycStatus extends Component {
               style={{ color: 'green', marginLeft: '4px' }}
             ></i>
           )}
+          {kycStatus === 'Submitted' && (
+            <div style={{ paddingTop: '4px' }}>
+              <Button
+                disabled={isLoading === true}
+                className="verify-again-link"
+                onClick={this.handleVerifyButtonClick}
+                type="link"
+                rounded={false}
+              >
+                Request again
+              </Button>
+            </div>
+          )}
         </div>
       );
     }
 
     return (
-      <div className="">
+      <div className="kyc-status-block">
         {this.state.isLoading ? (
           <Spinner color="#F7C06C" className="app-loading-spinner__inner" />
         ) : (
-          <div>{statusBlock}</div>
+          <div style={{ textAlign: 'center' }}>{statusBlock}</div>
         )}
       </div>
     );
