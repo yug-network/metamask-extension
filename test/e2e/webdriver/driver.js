@@ -248,6 +248,15 @@ class Driver {
     assert.ok(!dataTab, 'Found element that should not be present');
   }
 
+  async isElementPresent(element) {
+    try {
+      await this.findElement(element);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
   /**
    * Paste a string into a field.
    *
@@ -265,7 +274,9 @@ class Driver {
     await this.executeScript(
       `navigator.clipboard.writeText("${contentToPaste}")`,
     );
-    await this.fill(element, Key.chord(Key.CONTROL, 'v'));
+    const modifierKey =
+      process.platform === 'darwin' ? Key.COMMAND : Key.CONTROL;
+    await this.fill(element, Key.chord(modifierKey, 'v'));
   }
 
   // Navigation

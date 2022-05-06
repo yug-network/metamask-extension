@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import MetaFoxHorizontalLogo from './horizontal-logo';
 
 export default class MetaFoxLogo extends PureComponent {
   static propTypes = {
@@ -34,7 +35,6 @@ export default class MetaFoxLogo extends PureComponent {
             'app-header__metafox-logo--horizontal': !isOnboarding,
             'onboarding-app-header__metafox-logo--horizontal': isOnboarding,
           })}
-          alt=""
         />
         <img
           {...iconProps}

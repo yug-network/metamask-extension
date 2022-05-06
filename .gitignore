@@ -49,3 +49,6 @@ notes.txt
 
 #ignore kyc config
 kyc.config.json
+
+# TypeScript
+tsout/

@@ -143,12 +143,6 @@
   "addSuggestedTokens": {
     "message": "Tambahkan Token yang Disarankan"
   },
-  "addToAddressBook": {
-    "message": "Tambahkan ke buku alamat"
-  },
-  "addToAddressBookModalPlaceholder": {
-    "message": "contoh: John D."
-  },
   "addToken": {
     "message": "Tambahkan Token"
   },
@@ -952,9 +946,6 @@
   "ensUnknownError": {
     "message": "Pencarian ENS gagal."
   },
-  "enterAnAlias": {
-    "message": "Masukkan alias"
-  },
   "enterMaxSpendLimit": {
     "message": "Masukkan Batas Penggunaan Maksimum"
   },
@@ -1273,25 +1264,11 @@
   "importAccountError": {
     "message": "Galat saat mengimpor akun."
   },
-  "importAccountLinkText": {
-    "message": "impor menggunakan Frasa Pemulihan Rahasia"
-  },
   "importAccountMsg": {
     "message": "Akun yang diimpor tidak akan dikaitkan dengan Frasa Pemulihan Rahasia akun MetaMask yang asli dibuat. Pelajari selengkapnya tentang akun yang diimpor"
   },
   "importAccountSeedPhrase": {
     "message": "Impor dompet dengan Frasa Pemulihan Rahasia"
-  },
-  "importAccountText": {
-    "message": "atau $1",
-    "description": "$1 represents the text from `importAccountLinkText` as a link"
-  },
-  "importExistingWalletDescription": {
-    "message": "Masukkan Frasa Pemulihan Rahasia Anda (alias Frasa Benih) yang diberikan saat Anda membuat dompet. $1",
-    "description": "$1 is the words 'Learn More' from key 'learnMore', separated here so that it can be added as a link"
-  },
-  "importExistingWalletTitle": {
-    "message": "Impor dompet yang ada dengan Frasa Pemulihan Rahasia"
   },
   "importMyWallet": {
     "message": "Impor Dompet Saya"
@@ -1420,9 +1397,6 @@
   },
   "lastConnected": {
     "message": "Terakhir Terhubung"
-  },
-  "layer1Fees": {
-    "message": "Biaya lapis 1"
   },
   "learmMoreAboutGas": {
     "message": "Ingin $1 seputar gas?"
@@ -1745,9 +1719,6 @@
     "message": "Akun $1",
     "description": "Default name of next account to be created on create account screen"
   },
-  "newCollectibleAddFailed": {
-    "message": "Koleksi tidak ditambahkan karena: $1"
-  },
   "newCollectibleAddedMessage": {
     "message": "Koleksi berhasil ditambahkan!"
   },
@@ -1759,9 +1730,6 @@
   },
   "newNFTsDetected": {
     "message": "Baru! Deteksi NFT"
-  },
-  "newNFTsDetectedInfo": {
-    "message": "Izinkan MetaMask untuk mendeteksi NFT dari Opensea secara otomatis dan menampilkannya di dompet MetaMask Anda."
   },
   "newNetworkAdded": {
     "message": "“$1” berhasil ditambahkan!"
@@ -2229,9 +2197,6 @@
   "restore": {
     "message": "Pulihkan"
   },
-  "restoreAccountWithSeed": {
-    "message": "Pulihkan Akun dengan Frasa Pemulihan Rahasia"
-  },
   "restoreWalletPreferences": {
     "message": "Cadangan data Anda dari $1 telah ditemukan. Pulihkan preferensi dompet Anda?",
     "description": "$1 is the date at which the data was backed up"
@@ -2298,9 +2263,6 @@
   },
   "secretPhrase": {
     "message": "Hanya akun pertama di dompet ini yang akan dimuat secara otomatis. Setelah proses ini selesai, untuk menambahkan akun tambahan, klik menu drop down, lalu pilih Buat Akun."
-  },
-  "secretPhraseWarning": {
-    "message": "Jika Anda memulihkan menggunakan Frasa Pemulihan Rahasia lainnya, dompet, akun, dan aset Anda saat ini akan dihapus dari aplikasi ini secara permanen. Tindakan ini tidak dapat dibatalkan."
   },
   "secretRecoveryPhrase": {
     "message": "Frasa Pemulihan Rahasia"
@@ -2492,9 +2454,6 @@
   },
   "signed": {
     "message": "Ditandatangani"
-  },
-  "simulationErrorMessage": {
-    "message": "Transaksi ini diperkirakan akan gagal. Pelaksanaannya diperkirakan akan mahal dan berpotensi gagal, dan tidak direkomendasikan."
   },
   "simulationErrorMessageV2": {
     "message": "Kami tidak dapat memperkirakan gas. Tampaknya ada kesalahan dalam kontrak dan transaksi ini berpotensi gagal."
@@ -3160,9 +3119,6 @@
   },
   "tryAgain": {
     "message": "Coba lagi"
-  },
-  "tryAnywayOption": {
-    "message": "Saya akan tetap mencobanya"
   },
   "turnOnTokenDetection": {
     "message": "Nyalakan deteksi token yang ditingkatkan"
