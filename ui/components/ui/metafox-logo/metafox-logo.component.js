@@ -27,7 +27,10 @@ export default class MetaFoxLogo extends PureComponent {
           'app-header__logo-container--clickable': Boolean(onClick),
         })}
       >
-        <MetaFoxHorizontalLogo
+        <img
+          height="30"
+          srcSet="./images/logo/yug-logo-horizontal.png, ./images/logo/yug-logo-horizontal@2x.png 2x"
+          src="./images/logo/yug-logo-horizontal.png"
           className={classnames({
             'app-header__metafox-logo--horizontal': !isOnboarding,
             'onboarding-app-header__metafox-logo--horizontal': isOnboarding,
@@ -35,7 +38,8 @@ export default class MetaFoxLogo extends PureComponent {
         />
         <img
           {...iconProps}
-          src="./images/logo/metamask-fox.svg"
+          srcSet="./images/icon-yug-32.png, ./images/icon-yug-64.png 2x"
+          src="./images/icon-yug-32.png"
           className={classnames({
             'app-header__metafox-logo--icon': !isOnboarding,
             'onboarding-app-header__metafox-logo--icon': isOnboarding,

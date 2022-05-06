@@ -2088,6 +2088,22 @@ export function hideWarning() {
   };
 }
 
+export function getPrivateKey(address) {
+  return function (dispatch) {
+    return new Promise((resolve, reject) => {
+      background.exportAccount(address, function (err2, result) {
+        if (err2) {
+          log.error(err2);
+          dispatch(displayWarning('Had a problem exporting the account.'));
+          reject(err2);
+          return;
+        }
+        resolve(result);
+      });
+    });
+  };
+}
+
 export function exportAccount(password, address) {
   return function (dispatch) {
     dispatch(showLoadingIndication());

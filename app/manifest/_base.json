@@ -6,15 +6,15 @@
   },
   "browser_action": {
     "default_icon": {
-      "16": "images/icon-16.png",
-      "19": "images/icon-19.png",
-      "32": "images/icon-32.png",
-      "38": "images/icon-38.png",
-      "64": "images/icon-64.png",
-      "128": "images/icon-128.png",
-      "512": "images/icon-512.png"
+      "16": "images/icon-yug-16.png",
+      "19": "images/icon-yug-19.png",
+      "32": "images/icon-yug-32.png",
+      "38": "images/icon-yug-38.png",
+      "64": "images/icon-yug-64.png",
+      "128": "images/icon-yug-128.png",
+      "512": "images/icon-yug-512.png"
     },
-    "default_title": "MetaMask",
+    "default_title": "YugMask",
     "default_popup": "popup.html"
   },
   "commands": {
@@ -49,17 +49,17 @@
   "default_locale": "en",
   "description": "__MSG_appDescription__",
   "icons": {
-    "16": "images/icon-16.png",
-    "19": "images/icon-19.png",
-    "32": "images/icon-32.png",
-    "38": "images/icon-38.png",
-    "48": "images/icon-48.png",
-    "64": "images/icon-64.png",
-    "128": "images/icon-128.png",
-    "512": "images/icon-512.png"
+    "16": "images/icon-yug-16.png",
+    "19": "images/icon-yug-19.png",
+    "32": "images/icon-yug-32.png",
+    "38": "images/icon-yug-38.png",
+    "48": "images/icon-yug-48.png",
+    "64": "images/icon-yug-64.png",
+    "128": "images/icon-yug-128.png",
+    "512": "images/icon-yug-512.png"
   },
   "manifest_version": 2,
-  "name": "__MSG_appName__",
+  "name": "YugMask",
   "permissions": [
     "storage",
     "unlimitedStorage",
@@ -72,6 +72,6 @@
     "*://*.eth/",
     "notifications"
   ],
-  "short_name": "__MSG_appName__",
+  "short_name": "YugMask",
   "web_accessible_resources": ["inpage.js", "phishing.html"]
 }

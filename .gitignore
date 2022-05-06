@@ -47,5 +47,8 @@ notes.txt
 
 .metamaskrc
 
+#ignore kyc config
+kyc.config.json
+
 # TypeScript
 tsout/

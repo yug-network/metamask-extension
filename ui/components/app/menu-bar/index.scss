@@ -20,6 +20,12 @@
   }
 }
 
+.kyc-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .account-options-menu {
   &__explorer-origin {
     @include H7;
